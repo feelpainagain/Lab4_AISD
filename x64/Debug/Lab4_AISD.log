@@ -1,0 +1,5 @@
+﻿  main.cpp
+  set.cpp
+  Создание кода...
+C:\Users\kiril\Desktop\Lab4_AISD\Lab4_AISD\set.cpp(218): warning C4715: Set::Find: значение возвращается не при всех путях выполнения
+  Lab4_AISD.vcxproj -> C:\Users\kiril\Desktop\Lab4_AISD\x64\Debug\Lab4_AISD.exe

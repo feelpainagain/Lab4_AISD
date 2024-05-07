@@ -44,17 +44,25 @@ int main()
 	Set a;
 	Set b;
 
-	a.Insert(1);
-	a.Insert(2);
-	a.Insert(3);
-	a.Insert(4);
+	a.Insert(7);
+	a.Insert(5);
+	a.Insert(9);
+	a.Insert(8);
 
-	b.Insert(5);
+	a.Print();
+	a.Erase(9);
+	a.Insert(1);
+	a.Insert(6);
+	a.Insert(11);
+	a.Print();
+
+
+	/*b.Insert(5);
 	b.Insert(6);
 	b.Insert(7);
-	b.Insert(8);
+	b.Insert(8);*/
 
-	logic_xor(r, a, b);
+	/*logic_xor(r, a, b);*/
 
 	//try { 
 	//  logic_or(r, a, b); 

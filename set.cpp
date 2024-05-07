@@ -16,7 +16,7 @@ Tree* Set::_Insert(Tree* root, int key)
 		root->right = _Insert(root->right, key);
 	}
 	else if (key == root->key)
-		throw "The element is already exist";
+		return nullptr;
 	return _Balance(root);
 }
 
@@ -118,17 +118,20 @@ Tree* Set::_Balance(Tree* root)
 	}
 	return root;
 }
+
 Tree* Set::_Rotate_left(Tree* root) {
 	Tree* temp = root->right; root->right = temp->left;
 	temp->left = root; _Fix_height(root);
 	_Fix_height(temp); return temp;
 }
+
 Tree* Set::_Rotate_right(Tree* root) {
 	Tree* temp = root->left; root->left = temp->right;
 	temp->right = root;
 	_Fix_height(root); _Fix_height(temp);
 	return temp;
 }
+
 Tree* Set::_Find_min(Tree* root)
 {
 	if (root->left)
@@ -140,19 +143,23 @@ Tree* Set::_Find_min(Tree* root)
 		return root;
 	}
 }
+
 Tree* Set::_Erase_min(Tree* root)
 {
 	if (root->left == nullptr)
 		return root->right; root->left = _Erase_min(root->left);
 	return _Balance(root);
 }
+
 Set::Set()
 {
 	root = nullptr;
 }
+
 Set::~Set() {
 	_Delete_tree(root); root = nullptr;
 }
+
 void Set::Print() const {
 	if (root) {
 		_Print(root, 0);
@@ -161,9 +168,16 @@ void Set::Print() const {
 		cout << "Tree is empty";
 	}
 }
+
 bool Set::Insert(int key) {
-	root = _Insert(root, key); return true;
+	root = _Insert(root, key);
+	if (root == nullptr)
+	{
+		 return false;
+	}|
+	return true;
 }
+
 bool Set::Find(int key) const {
 	if (!root) {
 		cout << "Tree is empty";  return false;
@@ -180,13 +194,16 @@ bool Set::Find(int key) const {
 			return true;
 		}
 		else {
-			throw "The element doesn't exist";
+			return false;
 		}
 	}
 }
 bool Set::Erase(int key)
 {
-	root = _Erase_elem(root, key);
+	Tree* new_root = _Erase_elem(root, key);
+	if (new_root == nullptr) {
+		return false;
+	}
+	root = new_root;
 	return true;
 }
-
